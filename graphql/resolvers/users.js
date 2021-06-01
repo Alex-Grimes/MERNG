@@ -7,10 +7,10 @@ const { SECRET_KEY } = require('../../config');
 
 
 function generateToken(user){
-    jwt.sign({
-        id: res.id,
-        email: res.email,
-        username: res.username
+   return jwt.sign({
+        id: user.id,
+        email: user.email,
+        username: user.username
     }, SECRET_KEY, { expiresIn: '1h'});
 
 }
@@ -57,7 +57,7 @@ module.exports = {
                 throw new UserInputError('Errors', { errors });
             }
             // TODO: Make sure user dosent exist
-            const user = user.findOne({ username });
+            const user = await User.findOne({ username });
             if(user){
                 throw new UserInputError('Username is takern', {
                     errors: {
