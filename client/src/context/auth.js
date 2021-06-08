@@ -27,9 +27,9 @@ function authReducer(state, action){
 }
 
 function AuthProvider(props){
-    const [state, dispatch] = const [state, dispatch] = useReducer(authReducer, { user: null});
+    const [state, dispatch] = useReducer(authReducer, { user: null});
 
-    function login(data){
+    function login(userData){
         dispatch({
             type: 'LOGIN',
             payload: userData
